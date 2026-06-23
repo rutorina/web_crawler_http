@@ -1,5 +1,6 @@
 // process
 import { crawlPage } from './crawl.js';
+import { printReport } from './report.js';
 
 async function main() {
     if (process.argv.length < 3) {
@@ -16,9 +17,7 @@ async function main() {
     console.log(`starting crawl of ${baseURL}...`);
     const pages = await crawlPage(baseURL, baseURL, {});
 
-    for (const [page, count] of Object.entries(pages)) {
-        console.log(`${page} was found ${count} times`);
-    }
+    printReport(pages);
 }
 
 main();
